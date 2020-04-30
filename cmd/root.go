@@ -1,18 +1,37 @@
 package cmd
 
-import "github.com/leaanthony/clir"
+import (
+	"fmt"
+	"github.com/urfave/cli/v2"
+	"os"
+)
 
-var cli = clir.NewCli("goyave", "The go web framework with a special flavour.","v0.1.0")
-
-
-
-func init(){
-	cli.AddCommand(createCmd)
-}
-
-//Run starts the cli
 func Run(){
-	if err := cli.Run(); err != nil{
+
+	app := &cli.App{
+		Name: "goyave",
+		Usage: "The web framework with a special flavour.",
+		Version: "v0.1.0",
+		Authors: []*cli.Author{
+			{
+				Name:  "Alexander Wulf",
+				Email: "hi@alexfwulf.de",
+			},
+		},
+		Commands: []*cli.Command{
+			initCmd,
+			makeControllerCmd,
+			makeMiddlewareCmd,
+			makeModelCmd,
+			makeRequestCmd,
+			migrateFreshCmd,
+			migrateRunCmd,
+			routesCmd,
+			seedCmd,
+		},
+	}
+	fmt.Println(os.Args)
+	if err := app.Run(os.Args); err != nil {
 		panic(err)
 	}
 }
