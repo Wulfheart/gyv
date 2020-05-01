@@ -2,8 +2,11 @@ package main
 
 import (
 	"github.com/Wulfheart/goyave-cli/cmd"
+	"os"
 )
 
 func main() {
-  cmd.Run()
+	// For local testing
+	os.Chdir("C:\\Users\\Alex\\Documents\\tmp")
+	cmd.Run()
 }

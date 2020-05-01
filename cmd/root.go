@@ -6,11 +6,11 @@ import (
 	"os"
 )
 
-func Run(){
+func Run() {
 
 	app := &cli.App{
-		Name: "goyave",
-		Usage: "The web framework with a special flavour.",
+		Name:    "goyave",
+		Usage:   "The web framework with a special flavour.",
 		Version: "v0.1.0",
 		Authors: []*cli.Author{
 			{
@@ -30,8 +30,7 @@ func Run(){
 			seedCmd,
 		},
 	}
-	fmt.Println(os.Args)
 	if err := app.Run(os.Args); err != nil {
-		panic(err)
+		fmt.Println("Error:", err)
 	}
 }
