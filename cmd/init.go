@@ -3,12 +3,15 @@ package cmd
 import (
 	"archive/zip"
 	"fmt"
-	"github.com/urfave/cli/v2"
 	"io"
+	"io/ioutil"
 	"net/http"
 	"os"
 	"path/filepath"
+	"regexp"
 	"strings"
+
+	"github.com/urfave/cli/v2"
 )
 
 var initCmd = &cli.Command{
@@ -66,16 +69,59 @@ var initCmd = &cli.Command{
 				return nil
 			})
 		if err != nil {
-		    return err
+			return err
 		}
 
 		// rename goyave_template to name in files
+		err = spin("Renaming",
+			"Renamed",
+			func() error {
+				return filepath.Walk(dir, func(path string, info os.FileInfo, err error) error {
+					if err != nil {
+						return err
+					}
 
+					if info.IsDir() {
+						return nil
+					}
+					// Assuming that here are only files
+					ext := filepath.Ext(path)
+					matched, err := regexp.MatchString("(.go)|(.mod)|(.json)", ext)
+					if err != nil {
+						return err
+					}
+					if matched {
+						read, err := ioutil.ReadFile(path)
+						if err != nil {
+							return err
+						}
 
+						newContents := strings.Replace(string(read), "goyave_template", name, -1)
+
+						err = ioutil.WriteFile(path, []byte(newContents), 0)
+						if err != nil {
+							return err
+						}
+					}
+					return nil
+				})
+			})
 		// copy config.example.json to config.json
-		// Initialize git
-		// Install dependencies
-
+		err = spin("Creating config", "Created config", func() error {
+			data, err := ioutil.ReadFile(filepath.Join(dir, "config.example.json"))
+			if err != nil {
+				return err
+			}
+			// Write data to dst
+			err = ioutil.WriteFile(filepath.Join(dir, "config.json"), data, 0644)
+			if err != nil {
+				return err
+			}
+			return nil
+		})
+		if err != nil {
+		    return err
+		}
 		return nil
 	},
 	Usage:     "Initializes a new project",
