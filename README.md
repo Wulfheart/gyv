@@ -7,7 +7,7 @@ Feel free to make suggestions by [opening an issue](https://github.com/Wulfheart
 ## Install or update
 
 ```
-go get -u https://github.com/Wulfheart/gyv
+go get -u github.com/Wulfheart/gyv
 ```
 
 ## Usage
