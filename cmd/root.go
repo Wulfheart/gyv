@@ -1,7 +1,7 @@
 package cmd
 
 import (
-	"fmt"
+	"github.com/mingrammer/cfmt"
 	"github.com/urfave/cli/v2"
 	"os"
 )
@@ -9,7 +9,7 @@ import (
 func Run() {
 
 	app := &cli.App{
-		Name:    "goyave",
+		Name:    "gyv",
 		Usage:   "The web framework with a special flavour.",
 		Version: "v0.1.0",
 		Authors: []*cli.Author{
@@ -31,6 +31,6 @@ func Run() {
 		},
 	}
 	if err := app.Run(os.Args); err != nil {
-		fmt.Println("Error:", err)
+		_, _ = cfmt.Errorln("Error: ", err)
 	}
 }

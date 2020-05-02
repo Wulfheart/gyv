@@ -3,6 +3,7 @@ package cmd
 import (
 	"archive/zip"
 	"fmt"
+	"github.com/mingrammer/cfmt"
 	"io"
 	"io/ioutil"
 	"net/http"
@@ -38,7 +39,8 @@ var initCmd = &cli.Command{
 		err = spin("Downloading template project",
 			"Downloaded template project",
 			func() error {
-				return downloadFile(zip, "https://github.com/System-Glitch/goyave-template/archive/master.zip")
+				// return downloadFile(zip, "https://github.com/System-Glitch/goyave-template/archive/master.zip")
+				return downloadFile(zip, "https://github.com/Wulfheart/goyave-template/archive/master.zip")
 			})
 		if err != nil {
 			return err
@@ -122,6 +124,8 @@ var initCmd = &cli.Command{
 		if err != nil {
 		    return err
 		}
+
+		_, _ = cfmt.Successln("Initialized project at ", dir)
 		return nil
 	},
 	Usage:     "Initializes a new project",
