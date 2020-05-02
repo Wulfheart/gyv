@@ -1,4 +1,4 @@
-module github.com/Wulfheart/goyave-cli
+module github.com/Wulfheart/gyv
 
 go 1.14
 

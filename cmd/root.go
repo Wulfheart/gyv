@@ -15,7 +15,7 @@ func Run() {
 		Authors: []*cli.Author{
 			{
 				Name:  "Alexander Wulf",
-				Email: "hi@alexfwulf.de",
+				Email: "dev@alexfwulf.de",
 			},
 		},
 		Commands: []*cli.Command{
