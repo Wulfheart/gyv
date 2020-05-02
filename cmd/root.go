@@ -10,8 +10,8 @@ func Run() {
 
 	app := &cli.App{
 		Name:    "gyv",
-		Usage:   "The web framework with a special flavour.",
-		Version: "v0.1.0",
+		Usage:   "The goyave-cli with a special flavour.",
+		Version: "v0.1.0-nightly",
 		Authors: []*cli.Author{
 			{
 				Name:  "Alexander Wulf",
