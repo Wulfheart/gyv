@@ -3,7 +3,6 @@ package cmd
 import (
 	"archive/zip"
 	"fmt"
-	"github.com/mingrammer/cfmt"
 	"io"
 	"io/ioutil"
 	"net/http"
@@ -11,6 +10,8 @@ import (
 	"path/filepath"
 	"regexp"
 	"strings"
+
+	"github.com/mingrammer/cfmt"
 
 	"github.com/urfave/cli/v2"
 )
@@ -122,7 +123,7 @@ var initCmd = &cli.Command{
 			return nil
 		})
 		if err != nil {
-		    return err
+			return err
 		}
 
 		_, _ = cfmt.Successln("Initialized project at ", dir)

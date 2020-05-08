@@ -1,9 +1,10 @@
 package cmd
 
 import (
+	"os"
+
 	"github.com/mingrammer/cfmt"
 	"github.com/urfave/cli/v2"
-	"os"
 )
 
 func Run() {

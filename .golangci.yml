@@ -1,0 +1,23 @@
+run:
+  skip-dirs:
+    - .github
+  # Allow failure
+  # Remove this line later! (Or change value to 1)
+  issues-exit-code: 0
+
+linters-settings:
+  gocyclo:
+    min-complexity: 15
+  gofmt:
+    simplify: true
+  misspell:
+    locale: UK
+
+linters:
+  enable:
+    - gofmt
+    - gocyclo
+    - misspell
+  disable-all: false
+  fast: false
+  

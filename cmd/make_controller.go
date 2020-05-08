@@ -5,8 +5,8 @@ import (
 )
 
 var makeControllerCmd = &cli.Command{
-	Name:      "make:controller",
-	Category:  "make",
+	Name:     "make:controller",
+	Category: "make",
 	Action: func(context *cli.Context) error {
 		// err := changeWorkingDirectoryToRoot()
 		// if err != nil {
