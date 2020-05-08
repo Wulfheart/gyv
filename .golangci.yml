@@ -1,9 +1,6 @@
 run:
   skip-dirs:
     - .github
-  # Allow failure
-  # Remove this line later! (Or change value to 1)
-  issues-exit-code: 0
 
 linters-settings:
   gocyclo:
